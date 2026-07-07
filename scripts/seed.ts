@@ -18,6 +18,13 @@ function loadJSON<T>(filename: string): T {
   return JSON.parse(raw) as T;
 }
 
+function slugify(text: string): string {
+  return text.toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+    .slice(0, 200);
+}
+
 async function seed() {
   const client = postgres(process.env.DATABASE_URL!);
   const db = drizzle(client, { schema });
@@ -59,7 +66,7 @@ async function seed() {
   console.log(`  📄 Inserting ${docsData.length} documents...`);
   for (const doc of docsData) {
     await db.insert(schema.documents).values({
-      slug: doc.slug,
+      slug: doc.slug || slugify(doc.title),
       title: doc.title,
       author: doc.author,
       year: doc.year,
