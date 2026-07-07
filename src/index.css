@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* Stripedbass.org design tokens */
+:root {
+  --bg-primary: #050505;
+  --bg-card: #0a0a0a;
+  --bg-card-hover: #111111;
+  --bg-sidebar: #080808;
+  --accent: #00d2be;
+  --accent-dim: #00a89a;
+  --text-primary: #e5e5e5;
+  --text-secondary: #888888;
+  --text-muted: #555555;
+  --border: #1a1a1a;
+  --border-accent: #00d2be33;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Category tag colors */
+.tag-mgmt { background: #7c3aed20; color: #a78bfa; border: 1px solid #7c3aed40; }
+.tag-asmt { background: #00d2be20; color: #00d2be; border: 1px solid #00d2be40; }
+.tag-regs { background: #f59e0b20; color: #fbbf24; border: 1px solid #f59e0b40; }
+.tag-alloc { background: #ec489920; color: #f472b6; border: 1px solid #ec489940; }
+.tag-mort { background: #ef444420; color: #f87171; border: 1px solid #ef444440; }
+.tag-spwn { background: #22c55e20; color: #4ade80; border: 1px solid #22c55e40; }
+.tag-ecol { background: #06b6d420; color: #22d3ee; border: 1px solid #06b6d440; }
+.tag-econ { background: #f97316a0; color: #fb923c; border: 1px solid #f9731640; }
+.tag-data { background: #00d2be20; color: #00d2be; border: 1px solid #00d2be40; }
+.tag-legis { background: #8b5cf620; color: #a78bfa; border: 1px solid #8b5cf640; }
+.tag-proc { background: #64748b20; color: #94a3b8; border: 1px solid #64748b40; }
+
+/* Small caps for section headers */
+.section-header {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
