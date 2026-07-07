@@ -109,16 +109,13 @@ export const appRouter = t.router({
     };
   }),
 
-  // AI Chat (placeholder - will implement with OpenRouter)
+  // AI Chat
   aiChat: t.router({
     chat: publicProcedure
       .input(z.object({ message: z.string() }))
       .mutation(async ({ input }) => {
-        // TODO: implement RAG with pgvector + OpenRouter
-        return {
-          response: 'AI chat is being set up. Check back soon!',
-          sources: [],
-        };
+        const { chat } = await import('./ai-chat');
+        return chat(input.message);
       }),
   }),
 });
