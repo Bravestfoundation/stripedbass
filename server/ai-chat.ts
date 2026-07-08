@@ -2,7 +2,7 @@
  * AI Chat service — searches wiki articles + claims for context, then queries OpenRouter.
  * Simple keyword search approach (no vector DB needed for 15 articles + 25 claims).
  */
-import { db, schema } from '../db';
+import { db, schema } from './db';
 import { ilike, or, sql } from 'drizzle-orm';
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
