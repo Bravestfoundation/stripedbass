@@ -6,7 +6,7 @@ import { db, schema } from '../db';
 import { ilike, or, sql } from 'drizzle-orm';
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
-const MODEL = 'anthropic/claude-sonnet-4-20250514';
+const MODEL = 'anthropic/claude-3.5-sonnet';
 
 interface ChatResult {
   response: string;
@@ -100,6 +100,12 @@ RULES:
         temperature: 0.3,
       }),
     });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      console.error('OpenRouter API error:', res.status, errText);
+      return { response: `AI service returned an error (${res.status}). Please try again.`, sources: [] };
+    }
 
     const data = await res.json() as any;
     const response = data.choices?.[0]?.message?.content || 'Sorry, I could not generate a response.';
