@@ -2,6 +2,7 @@ import { initTRPC } from '@trpc/server';
 import { z } from 'zod';
 import { db, schema } from './db';
 import { eq, ilike, or, sql, desc } from 'drizzle-orm';
+import { chat as aiChat } from './ai-chat';
 import type { Context } from './context';
 
 const t = initTRPC.context<Context>().create();
@@ -114,8 +115,7 @@ export const appRouter = t.router({
     chat: publicProcedure
       .input(z.object({ message: z.string() }))
       .mutation(async ({ input }) => {
-        const { chat } = await import('./ai-chat');
-        return chat(input.message);
+        return aiChat(input.message);
       }),
   }),
 });
