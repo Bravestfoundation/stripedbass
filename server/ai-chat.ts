@@ -126,8 +126,9 @@ RULES:
     }
 
     return { response, sources };
-  } catch (err) {
-    console.error('AI chat error:', err);
+  } catch (err: any) {
+    console.error('AI chat error:', err?.message || err);
+    console.error('Stack:', err?.stack);
     return { response: 'Sorry, there was an error processing your request.', sources: [] };
   }
 }
