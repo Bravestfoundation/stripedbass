@@ -6,7 +6,7 @@ import { db, schema } from './db';
 import { ilike, or, sql } from 'drizzle-orm';
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
-const MODEL = 'anthropic/claude-3.5-sonnet';
+const MODEL = 'anthropic/claude-sonnet-4';
 
 interface ChatResult {
   response: string;
